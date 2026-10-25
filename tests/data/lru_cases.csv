@@ -1,0 +1,6 @@
+id,maxsize,inserts,expected_keys,expected_size
+LRU01,3,a b c,a b c,3
+LRU02,3,a b c d,b c d,3
+LRU03,1,a b,b,1
+LRU04,2,a,a,1
+LRU05,2,a b c d e,d e,2

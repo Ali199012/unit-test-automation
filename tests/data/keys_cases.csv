@@ -1,0 +1,8 @@
+id,func,args1,args2,expected_equal
+KEY01,hashkey,"(1, 2)","(1, 2)",True
+KEY02,hashkey,"(1, 2)","(2, 1)",False
+KEY03,hashkey,"(1,)","(1.0,)",True
+KEY04,hashkey,"('1',)","(1,)",False
+KEY05,typedkey,"(1,)","(1.0,)",False
+KEY06,typedkey,"(True,)","(1,)",False
+KEY07,typedkey,"(1, 'a')","(1, 'a')",True

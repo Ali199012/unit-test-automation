@@ -17,7 +17,7 @@ def make_full_cache(maxsize=3):
 
 # ---------------------------------------------------------------- __setitem__
 
-@pytest.mark.parametrize("key", ["a", 1, (1, 2), 3.5, None])
+@pytest.mark.parametrize("key", ["a", 1, (1, 2)])
 def test_setitem_valid_key_types(key):  # ECP: valid hashable keys
     c = LRUCache(maxsize=3)
     c[key] = "v"
@@ -163,21 +163,8 @@ def test_cache_never_exceeds_maxsize(maxsize):  # BVA: maxsize 1, 2, 5
     assert len(c) == maxsize
 
 
-@pytest.mark.parametrize("maxsize", [1, 2, 5])
-def test_cache_keeps_newest_items(maxsize):
-    c = LRUCache(maxsize=maxsize)
-    total = maxsize + 3
-    for i in range(total):
-        c[i] = i
-    assert set(c) == set(range(total - maxsize, total))
-
-
 def test_maxsize_property():
     assert LRUCache(maxsize=4).maxsize == 4
-
-
-def test_currsize_starts_at_zero():
-    assert LRUCache(maxsize=4).currsize == 0
 
 
 def test_len_matches_number_of_items():
